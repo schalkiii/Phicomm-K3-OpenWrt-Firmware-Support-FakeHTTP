@@ -32,6 +32,11 @@
 #cat package/base-files/files/bin/config_generate |grep system.ntp.server=
 #echo 'Alert NTP Settings OK!====================='
 
+echo '修改K3设备定义，移除USB默认包并添加屏幕控制'
+sed -i 's/\$(USB3_PACKAGES) k3screenctrl/k3screenctrl luci-app-k3screenctrl/g' target/linux/bcm53xx/image/Makefile
+sed -i 's/\$(USB3_PACKAGES) k3screenctrl/k3screenctrl luci-app-k3screenctrl/g' target/linux/bcm53xx/image/generic.mk 2>/dev/null
+echo '=========Modify K3 device definition OK!========='
+
 echo '修改主机名'
 sed -i "s/hostname='OpenWrt'/hostname='Phicomm-K3'/g" package/base-files/files/bin/config_generate
 cat package/base-files/files/bin/config_generate |grep hostname=
