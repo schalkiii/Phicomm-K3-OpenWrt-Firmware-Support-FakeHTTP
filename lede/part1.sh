@@ -51,3 +51,18 @@ FIRMWARE='asus_dhd24'
 echo '替换无线驱动'
 wget -nv https://github.com/yangxu52/Phicomm-k3-Wireless-Firmware/raw/master/brcmfmac4366c-pcie.bin.${FIRMWARE} -O package/lean/k3-brcmfmac4366c-firmware/files/lib/firmware/brcm/brcmfmac4366c-pcie.bin
 echo '=========Replace k3 wireless firmware OK!========='
+
+echo '添加FakeHTTP'
+rm -rf package/lean/fakehttp
+git clone https://github.com/MikeWang000000/FakeHTTP.git package/lean/fakehttp
+echo '=========Add FakeHTTP OK!========='
+
+echo '添加FakeSIP'
+rm -rf package/lean/fakesip
+git clone https://github.com/MikeWang000000/FakeSIP.git package/lean/fakesip
+echo '=========Add FakeSIP OK!========='
+
+echo '添加nf_deaf内核模块'
+rm -rf package/kernel/nf_deaf
+git clone https://github.com/kob/nf_deaf-openwrt.git package/kernel/nf_deaf
+echo '=========Add nf_deaf OK!========='
